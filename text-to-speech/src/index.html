@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Speech App</title>
+</head>
+<body>
+    <h1>Text-to-Speech App</h1>
+    <form action="/tts" method="post">
+        <textarea name="text" rows="5" cols="50" placeholder="Enter text..."></textarea>
+        <br>
+        <input type="submit" value="Convert to Speech">
+    </form>
+    {% if audio_file %}
+        <audio controls>
+            <source src="{{ audio_file }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    {% endif %}
+</body>
+</html>
