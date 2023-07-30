@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  t2s:
+    restart: always
+    container_name: text_to_speech_service
+    build:
+      context: ./text-to-speech
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - text-to-speech
+
+
+networks:
+  text-to-speech:
+    driver: bridge
