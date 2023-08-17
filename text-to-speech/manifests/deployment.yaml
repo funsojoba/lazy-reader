@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t2s
+spec:
+  selector:
+    matchLabels:
+      app: t2s
+  template:
+    metadata:
+      labels:
+        app: t2s
+    spec:
+      containers:
+      - name: t2s
+        image: funsojoba/text-to-speech
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
