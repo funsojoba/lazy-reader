@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: t2s
+  name: t2s-deployment
 spec:
   selector:
     matchLabels:
-      app: t2s
+      app: t2s-deployment
   template:
     metadata:
       labels:
-        app: t2s
+        app: t2s-deployment
     spec:
       containers:
-      - name: t2s
-        image: funsojoba/text-to-speech
+      - name: t2s-deployment-container
+        image: funsojoba/text_to_speach-t2s:latest
         resources:
           limits:
             memory: "128Mi"
