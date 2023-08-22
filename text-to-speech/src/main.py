@@ -3,28 +3,30 @@
 """
 
 import os
+import uuid
 from gtts import gTTS
 from flask import Flask, render_template, request
 
-import pyttsx3
 
-engine = pyttsx3.init()
 app = Flask(__name__)
 
 
 
 @app.get("/")
 def home():
-    return render_template('index.html')
+    return render_template('./index.html')
 
 
 
 @app.route('/tts', methods=['POST'])
 def tts():
     text = request.form['text']
+    if not bool(text): 
+        return render_template('index.html', message = "Please enter some text")
     tts = gTTS(text=text, lang='en')
-    tts.save('output.mp3')
-    return render_template('index.html', audio_file='output.mp3')
+    output_name = uuid.uuid1().hex + ".mp3"
+    tts.save(output_name)
+    return render_template('index.html', audio_file=output_name)
 
 
 

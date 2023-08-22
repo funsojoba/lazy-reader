@@ -10,9 +10,14 @@
         <br>
         <input type="submit" value="Convert to Speech">
     </form>
+
+    {% if message %}
+        <p>{{message}}</p>
+    {% endif %}
+
     {% if audio_file %}
         <audio controls>
-            <source src="{{ audio_file }}" type="audio/mpeg">
+            <source src="{{ audio_file }}" type="audio/mp3" download>
             Your browser does not support the audio element.
         </audio>
     {% endif %}
