@@ -25,8 +25,11 @@ def tts():
         return render_template('index.html', message = "Please enter some text")
     tts = gTTS(text=text, lang='en')
     output_name = uuid.uuid1().hex + ".mp3"
-    tts.save(output_name)
-    return render_template('index.html', audio_file=output_name)
+
+    static_path = os.path.join(app.root_path, 'static')
+    output_path = os.path.join(static_path, output_name)
+    tts.save(output_path)
+    return render_template('index.html', audio_file="static/"+output_name)
 
 
 
