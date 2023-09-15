@@ -1,9 +1,9 @@
 from flask import Flask
-from blueprints.auth_bp import auth_blue_print
+from blueprints.signup_bp import auth_blue_print
 
 
 app = Flask(__name__)
-app.register_blueprint(auth_blue_print, url_prefix="auth/")
+app.register_blueprint(auth_blue_print, url_prefix="/auth/")
 
 
 
