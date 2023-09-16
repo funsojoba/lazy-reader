@@ -1,6 +1,4 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-# from dotenv import load_dotenv, dotenv_values
 
 from decouple import config as env_config
 
@@ -12,9 +10,9 @@ app = Flask(__name__)
 app.register_blueprint(signup_blue_print, url_prefix="/auth/")
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = env_config('SQLALCHEMY_DATABASE_URI')
-
-
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(
+        debug=env_config("DEBUG"), 
+        host='0.0.0.0',
+        port=env_config("WEB_PORT"))

@@ -3,6 +3,8 @@ from flask import Blueprint, request
 
 from helpers.response import Response
 
+from .. import model
+
 
 
 signup_blue_print = Blueprint("auth_bp", __name__, template_folder="templates")
@@ -41,5 +43,6 @@ def sign_up():
     hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
 
     # check DB for email
+    user = User.query.filter_by(email=email)
 
     return Response(data={"name": "Funso joba"})
