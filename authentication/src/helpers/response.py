@@ -11,9 +11,8 @@ class Response:
         cls.validate(data, error)
         return jsonify(
             data=data,
-            status=status_code,
             error=error
-        )
+        ), status_code
 
     
     @classmethod
