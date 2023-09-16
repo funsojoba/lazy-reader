@@ -5,11 +5,11 @@ from helpers.response import Response
 
 
 
-auth_blue_print = Blueprint("auth_bp", __name__, template_folder="templates")
+signup_blue_print = Blueprint("auth_bp", __name__, template_folder="templates")
 
 
 
-@auth_blue_print.route("/signup", methods=['POST'])
+@signup_blue_print.route("/signup", methods=['POST'])
 def sign_up():
     data = request.get_json()
 
