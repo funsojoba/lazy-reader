@@ -8,6 +8,8 @@ COPY requirements.txt .
 
 RUN apt-get update && apt-get upgrade -y
 
+RUN apt-get -y --no-install-recommends install netcat build-essential cargo libpq-dev
+
 RUN python -m pip install --upgrade pip setuptools \
     && pip install wheel \
     && pip install -r requirements.txt

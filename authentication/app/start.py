@@ -62,10 +62,7 @@ class App:
 
     def set_routes(self):
         api = Api(self.app)
-        # init_auth_routes(api)
-        #NOTE: add your app routes here
-        # init_product_routes(api)
-        # init_cart_routes(api)
+
         self.set_home_route()
 
     def set_home_route(self):

@@ -15,9 +15,44 @@ services:
       - FLASK_ENV=development
       - FLASK_DEBUG=1
       - FLASK_APP=src/main.py
-
+  
+  auth-db:
+    image: 'postgres:12'
+    hostname: postgres
+    container_name: auth_db_container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DBNAME=postgres
+    ports:
+      - '5433:5432'
+    networks:
+      - auth-network
+  
+  auth-web:
+    build:
+      context: ./authentication
+      dockerfile: Dockerfile
+    container_name: auth_container
+    command: bash entrypoint.sh
+    volumes:
+      - ./authentication:/app
+    ports:
+      - 5001:5001
+    depends_on:
+      - auth-db
+    networks:
+      - auth-network
 
 
 networks:
   text-to-speech:
     driver: bridge
+  auth-network:
+    driver: bridge
+
+
+volumes:
+  postgres_data:
