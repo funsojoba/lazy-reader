@@ -17,7 +17,7 @@ import core.settings as config
 # from app.users.routes import init_auth_routes
 
 
-from core.commands import create_dummy_users_command
+# from core.commands import create_dummy_users_command
 from core.error_handlers import AppError
 from core.resources.database import db
 
