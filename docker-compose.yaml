@@ -33,18 +33,26 @@ services:
   
   auth-web:
     build:
-      context: ./authentication
+      context: ./auth_service
       dockerfile: Dockerfile
     container_name: auth_container
-    command: bash entrypoint.sh
+    command: bash app.sh
     volumes:
-      - ./authentication:/app
+      - ./auth_service:/app
     ports:
-      - 5001:5001
+      - 5003:5003
     depends_on:
       - auth-db
     networks:
       - auth-network
+
+  rabbit:
+    image: 'rabbitmq:3-management'
+    container_name: rabbit_container
+    ports:
+            - 5672:5672
+            - 15672:15672
+
 
 
 networks:

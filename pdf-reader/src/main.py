@@ -25,3 +25,7 @@ def read_pdf(request):
     
     # closing the pdf file object
     pdfFileObj.close()
+
+
+if __name__ == "__main__":
+    app.run()

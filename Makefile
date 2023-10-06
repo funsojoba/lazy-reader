@@ -1,7 +1,11 @@
+COMPOSE=docker compose
 
 up:
-	docker compose up
+	$(COMPOSE) up
 
 down:
-	docker compose down
+	$(COMPOSE) down
+
+build:
+	$(COMPOSE) build
 
